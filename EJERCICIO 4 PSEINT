@@ -1,0 +1,169 @@
+Algoritmo sin_titulo
+	// Declaracion de variables
+	Definir tipoc, tipoh, horario, anillado Como Entero
+	Definir Numeroh, tipo, Pll, recargo, desc, descll, subtotal, total Como Real
+	Definir Pa, Pb, Pc Como Real
+	Definir nombretipo, nombrecliente, anilladod, horariod Como Cadena
+	Pa <- 1
+	Pb <- 0.75
+	Pc <- 0.5
+	desc <- 0
+	recargo <- 0
+	Escribir 'Quien desea sacar copias (Docente=1 / Estudiante=0): '
+	Leer tipoc
+	Escribir 'B/N o Color (B/N=1 / Color=0): '
+	Leer tipoh
+	Escribir 'Numero de hojas: '
+	Leer Numeroh
+	Escribir 'Horario (Nocturno=1 / Diurno=0): '
+	Leer horario
+	Escribir 'Anillado (Si=1 / No=0): '
+	Leer anillado
+	Si tipoc=1 Entonces
+		desc <- 0.05
+		nombrecliente <- 'Docente'
+	SiNo
+		nombrecliente <- 'Estudiante'
+		Si tipoc=0 Y Numeroh>50 Entonces
+			desc <- 0.08
+		FinSi
+	FinSi
+	Si tipoh=1 Entonces
+		tipo <- 0.05
+		nombretipo <- 'B/N'
+	SiNo
+		tipo <- 0.10
+		nombretipo <- 'COLOR'
+	FinSi
+	Si anillado=1 Entonces
+		Pll <- 1
+		anilladod <- 'SI'
+	SiNo
+		Pll <- 0
+		anilladod <- 'NO'
+	FinSi
+	Si Numeroh>80 Entonces
+		descll <- Pll*0.25
+	SiNo
+		descll <- 0
+	FinSi
+	Si horario=1 Entonces
+		recargo <- 0.10
+		horariod <- 'Nocturno'
+	SiNo
+		recargo <- 0
+		horariod <- 'Diurno'
+	FinSi
+	Si Numeroh<=20 Entonces
+		subtotal <- (Numeroh*tipo*Pa)+(Pll-descll)
+	SiNo
+		Si Numeroh>20 Y Numeroh<=100 Entonces
+			subtotal <- (Numeroh*tipo*Pb)+(Pll-descll)
+		SiNo
+			subtotal <- (Numeroh*tipo*Pc)+(Pll-descll)
+		FinSi
+	FinSi
+	total <- subtotal-(subtotal*desc)+(subtotal*recargo)
+	Escribir '===================================='
+	Escribir '   IMPRESORAS LOS POLLOSHERMANOS    '
+	Escribir '===================================='
+	Escribir 'Tipo de cliente : ', nombrecliente
+	Escribir 'Tipo impresion  : ', nombretipo
+	Escribir 'Numero de hojas : ', Numeroh
+	Escribir 'Horario         : ', horariod
+	Escribir 'Anillado        : ', anilladod
+	Escribir '------------------------------------'
+	Escribir 'Subtotal        : $', subtotal
+	Escribir 'Descuento       : ', desc*100, ' %'
+	Escribir 'Recargo         : ', recargo*100, ' %'
+	Escribir '------------------------------------'
+	Escribir 'TOTAL A PAGAR   : $', total
+	Escribir '===================================='
+	Escribir '       GRACIAS POR SU COMPRA :)     '
+	Escribir '===================================='
+FinAlgoritmo
+C++
+Algoritmo sin_titulo
+	// Declaracion de variables
+	Definir tipoc, tipoh, horario, anillado Como Entero
+	Definir Numeroh, tipo, Pll, recargo, desc, descll, subtotal, total Como Real
+	Definir Pa, Pb, Pc Como Real
+	Definir nombretipo, nombrecliente, anilladod, horariod Como Cadena
+	Pa <- 1
+	Pb <- 0.75
+	Pc <- 0.5
+	desc <- 0
+	recargo <- 0
+	Escribir 'Quien desea sacar copias (Docente=1 / Estudiante=0): '
+	Leer tipoc
+	Escribir 'B/N o Color (B/N=1 / Color=0): '
+	Leer tipoh
+	Escribir 'Numero de hojas: '
+	Leer Numeroh
+	Escribir 'Horario (Nocturno=1 / Diurno=0): '
+	Leer horario
+	Escribir 'Anillado (Si=1 / No=0): '
+	Leer anillado
+	Si tipoc=1 Entonces
+		desc <- 0.05
+		nombrecliente <- 'Docente'
+	SiNo
+		nombrecliente <- 'Estudiante'
+		Si tipoc=0 Y Numeroh>50 Entonces
+			desc <- 0.08
+		FinSi
+	FinSi
+	Si tipoh=1 Entonces
+		tipo <- 0.05
+		nombretipo <- 'B/N'
+	SiNo
+		tipo <- 0.10
+		nombretipo <- 'COLOR'
+	FinSi
+	Si anillado=1 Entonces
+		Pll <- 1
+		anilladod <- 'SI'
+	SiNo
+		Pll <- 0
+		anilladod <- 'NO'
+	FinSi
+	Si Numeroh>80 Entonces
+		descll <- Pll*0.25
+	SiNo
+		descll <- 0
+	FinSi
+	Si horario=1 Entonces
+		recargo <- 0.10
+		horariod <- 'Nocturno'
+	SiNo
+		recargo <- 0
+		horariod <- 'Diurno'
+	FinSi
+	Si Numeroh<=20 Entonces
+		subtotal <- (Numeroh*tipo*Pa)+(Pll-descll)
+	SiNo
+		Si Numeroh>20 Y Numeroh<=100 Entonces
+			subtotal <- (Numeroh*tipo*Pb)+(Pll-descll)
+		SiNo
+			subtotal <- (Numeroh*tipo*Pc)+(Pll-descll)
+		FinSi
+	FinSi
+	total <- subtotal-(subtotal*desc)+(subtotal*recargo)
+	Escribir '===================================='
+	Escribir '   IMPRESORAS LOS POLLOSHERMANOS    '
+	Escribir '===================================='
+	Escribir 'Tipo de cliente : ', nombrecliente
+	Escribir 'Tipo impresion  : ', nombretipo
+	Escribir 'Numero de hojas : ', Numeroh
+	Escribir 'Horario         : ', horariod
+	Escribir 'Anillado        : ', anilladod
+	Escribir '------------------------------------'
+	Escribir 'Subtotal        : $', subtotal
+	Escribir 'Descuento       : ', desc*100, ' %'
+	Escribir 'Recargo         : ', recargo*100, ' %'
+	Escribir '------------------------------------'
+	Escribir 'TOTAL A PAGAR   : $', total
+	Escribir '===================================='
+	Escribir '       GRACIAS POR SU COMPRA :)     '
+	Escribir '===================================='
+FinAlgoritmo
