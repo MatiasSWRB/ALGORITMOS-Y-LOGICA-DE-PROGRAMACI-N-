@@ -1,0 +1,74 @@
+Algoritmo sin_titulo
+		
+		Definir nota1, nota2, nota3, asistencia, promedio Como Real
+		Definir proyectoFinal, plagio Como Entero
+		Definir estadoAcademico, observacionDisciplinaria, observacionRendimiento Como Cadena
+		
+		Escribir "Nota 1: "
+		Leer nota1
+		Escribir "Nota 2: "
+		Leer nota2
+		Escribir "Nota 3: "
+		Leer nota3
+		Escribir "Porcentaje de asistencia: "
+		Leer asistencia
+		Escribir "Entrego proyecto final? (1=Si, 0=No): "
+		Leer proyectoFinal
+		Escribir "Cometio plagio? (1=Si, 0=No): "
+		Leer plagio
+		
+		promedio <- (nota1 + nota2 + nota3) / 3
+		observacionDisciplinaria <- "Sin observaciones"
+		observacionRendimiento <- "Rendimiento normal"
+		
+		Si plagio == 1 Entonces
+			estadoAcademico <- "Reprobado automatico"
+			observacionDisciplinaria <- "Cometio plagio"
+		SiNo
+			Si asistencia < 70 Entonces
+				estadoAcademico <- "Reprobado"
+				observacionDisciplinaria <- "Asistencia insuficiente"
+			SiNo
+				Si nota1 >= 9 Y nota2 >= 9 Y nota3 >= 9 Y asistencia >= 95 Entonces
+					estadoAcademico <- "Aprobado con felicitacion"
+				SiNo
+					Si promedio >= 7 Y proyectoFinal == 1 Entonces
+						estadoAcademico <- "Aprobado"
+					SiNo
+						Si promedio >= 5 Y promedio < 7 Entonces
+							estadoAcademico <- "Recuperacion"
+						SiNo
+							Si promedio < 5 Entonces
+								estadoAcademico <- "Reprobado"
+							Fin Si
+						Fin Si
+					Fin Si
+				Fin Si
+				
+				Si proyectoFinal == 0 Y estadoAcademico == "Aprobado" Entonces
+					estadoAcademico <- "Recuperacion"
+				Fin Si
+				
+			Fin Si
+		Fin Si
+		
+		Si nota1 = 10 Y nota2 < 4 Y nota3 < 4 Entonces
+			observacionRendimiento <- "Rendimiento irregular"
+		SiNo
+			Si nota2 = 10 Y nota1 < 4 Y nota3 < 4 Entonces
+				observacionRendimiento <- "Rendimiento irregular"
+			SiNo
+				Si nota3 = 10 Y nota1 < 4 Y nota2 < 4 Entonces
+					observacionRendimiento <- "Rendimiento irregular"
+				Fin Si
+			Fin Si
+		Fin Si
+		Escribir ""
+		Escribir "----- RESULTADO ACADEMICO -----"
+		Escribir "Promedio: ", promedio
+		Escribir "Estado academico: ", estadoAcademico
+		Escribir "Observacion disciplinaria: ", observacionDisciplinaria
+		Escribir "Observacion de rendimiento: ", observacionRendimiento
+		
+
+FinAlgoritmo
