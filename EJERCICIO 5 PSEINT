@@ -1,0 +1,71 @@
+Algoritmo sin_titulo
+		
+		Definir saldo, monto Como Entero
+		Definir b20, b10, b5, b1 Como Entero
+		Definir u20, u10, u5, u1 Como Entero
+		Definir efectivo, restante Como Entero
+		
+		// Datos
+		Escribir "Saldo del usuario: "
+		Leer saldo
+		
+		Escribir "Billetes de 20, 10, 5 y 1: "
+		Leer b20, b10, b5, b1
+		
+		Escribir "Monto a retirar: "
+		Leer monto
+		
+		// Efectivo total
+		efectivo <- b20*20 + b10*10 + b5*5 + b1
+		
+		// Validaciones
+		Si monto <= 0 O monto > saldo O monto > efectivo Entonces
+			Escribir "Error: operacion no valida."
+		SiNo
+			
+			restante <- monto
+			
+			// Billetes de 20
+			u20 <- restante / 20
+			Si u20 > b20 Entonces
+				u20 <- b20
+			FinSi
+			restante <- restante - (u20 * 20)
+			
+			// Billetes de 10
+			u10 <- restante / 10
+			Si u10 > b10 Entonces
+				u10 <- b10
+			FinSi
+			restante <- restante - (u10 * 10)
+			
+			// Billetes de 5
+			u5 <- restante / 5
+			Si u5 > b5 Entonces
+				u5 <- b5
+			FinSi
+			restante <- restante - (u5 * 5)
+			
+			// Billetes de 1
+			u1 <- restante
+			Si u1 > b1 Entonces
+				u1 <- b1
+			FinSi
+			restante <- restante - u1
+			
+			// Resultado (equivalente a switch)
+			Si restante = 0 Entonces
+				Escribir "Retiro exitoso"
+				Escribir "Billetes de 20: ", u20
+				Escribir "Billetes de 10: ", u10
+				Escribir "Billetes de 5: ", u5
+				Escribir "Billetes de 1: ", u1
+				Escribir "Saldo restante: ", saldo - monto
+				Escribir "Efectivo cajero: ", efectivo - monto
+			SiNo
+				Escribir "No se puede entregar el monto exacto."
+			FinSi
+			
+		FinSi
+		
+FinAlgoritmo
