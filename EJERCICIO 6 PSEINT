@@ -1,0 +1,82 @@
+Algoritmo sin_titulo
+	Definir estudiantes, dias, alimentacion, descuentoInst, coordinador Como Entero
+	Definir pagantesTransporte, tipoTransporte Como Entero
+	Definir hospedajeDia, transportePersona Como Real
+	Definir costoTransporte, costoHospedaje, costoAlimentacion Como Real
+	Definir subtotal, descuentoHosp, descuentoInstitucional Como Real
+	Definir totalGeneral, totalPorEstudiante Como Real
+	Definir recomendacion Como Cadena
+	transportePersona <- 0
+	descuentoHosp <- 0
+	descuentoInstitucional <- 0
+	Escribir 'Numero de estudiantes: '
+	Leer estudiantes
+	Escribir 'Tipo de transporte (1=Bus, 2=Van, 3=Avion): '
+	Leer tipoTransporte
+	Escribir 'Numero de dias: '
+	Leer dias
+	Escribir 'Costo de hospedaje por dia: '
+	Leer hospedajeDia
+	Escribir 'Incluye alimentacion? (1=Si, 0=No): '
+	Leer alimentacion
+	Escribir 'Aplica descuento institucional? (1=Si, 0=No): '
+	Leer descuentoInst
+	Escribir 'Hay coordinador que viaja gratis en transporte? (1=Si, 0=No): '
+	Leer coordinador
+	Si estudiantes<=0 O dias<=0 O hospedajeDia<=0 Entonces
+		Escribir 'Error: datos no validos.'
+	SiNo
+		Según tipoTransporte Hacer
+			1:
+				transportePersona <- 25
+			2:
+				transportePersona <- 35
+			3:
+				transportePersona <- 120
+			De Otro Modo:
+				Escribir 'Error: tipo de transporte no valido.'
+		FinSegún
+		Si transportePersona>0 Entonces
+			Si estudiantes>20 Entonces
+				transportePersona <- transportePersona-5
+			FinSi
+			pagantesTransporte <- estudiantes
+			Si coordinador==1 Entonces
+				pagantesTransporte <- estudiantes-1
+			FinSi
+			Si pagantesTransporte<0 Entonces
+				pagantesTransporte <- 0
+			FinSi
+			costoTransporte <- pagantesTransporte*transportePersona
+			costoHospedaje <- estudiantes*dias*hospedajeDia
+			Si dias>3 Entonces
+				descuentoHosp <- costoHospedaje*0.10
+				costoHospedaje <- costoHospedaje-descuentoHosp
+			FinSi
+			Si alimentacion==1 Entonces
+				costoAlimentacion <- estudiantes*dias*10
+			SiNo
+				costoAlimentacion <- 0
+			FinSi
+			subtotal <- costoTransporte+costoHospedaje+costoAlimentacion
+			Si descuentoInst==1 Y subtotal>1000 Entonces
+				descuentoInstitucional <- subtotal*0.08
+			FinSi
+			totalGeneral <- subtotal-descuentoInstitucional
+			totalPorEstudiante <- totalGeneral/estudiantes
+			Si totalPorEstudiante>200 Entonces
+				recomendacion <- 'Viaje no recomendable'
+			SiNo
+				recomendacion <- 'Viaje recomendable'
+			FinSi
+			Escribir '----- RESUMEN DEL VIAJE -----'
+			Escribir 'Costo de transporte: $', costoTransporte
+			Escribir 'Costo de hospedaje: $', costoHospedaje
+			Escribir 'Costo de alimentacion: $', costoAlimentacion
+			Escribir 'Descuento aplicado: $', (descuentoHosp+descuentoInstitucional)
+			Escribir 'Total general: $', totalGeneral
+			Escribir 'Total por estudiante: $', totalPorEstudiante
+			Escribir 'Recomendacion final: ', recomendacion
+		FinSi
+	FinSi
+FinAlgoritmo
