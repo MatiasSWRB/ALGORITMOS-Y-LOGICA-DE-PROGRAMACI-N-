@@ -1,0 +1,66 @@
+Algoritmo sin_titulo
+	Definir Nombre, EstadoB Como Cadena
+	Definir Bec, Bep, Maa, Noc, Motivo Como Cadena
+	Definir Promedio, Materiasp, IngresosF, Proyectos, Asistencia Como Entero
+	Bec <- 'Cumple con los requisitos: Beca completa'
+	Bep <- 'Cumple parcialmente con los requisitos: Beca parcial'
+	Maa <- 'Cumple con la minima de requisitos: Materiales de apoyo'
+	Noc <- 'No cumple con los requisitos: Beca negada'
+	Escribir 'Nombre del estudiante: '
+	Leer Nombre
+	Escribir 'Promedio del estudiante: '
+	Leer Promedio
+	Escribir 'Numero de materias perdidas: '
+	Leer Materiasp
+	Escribir 'Ingresos familiares: '
+	Leer IngresosF
+	Escribir 'Participacion en proyectos (SI=1 / NO=0): '
+	Leer Proyectos
+	Escribir 'Porcentaje de asistencia: '
+	Leer Asistencia
+	Si Asistencia<80 Entonces
+		EstadoB <- Noc
+		Motivo <- 'Su porcentaje de asistencia es menor al 80%'
+	SiNo
+		Si Promedio<7 Entonces
+			EstadoB <- Noc
+			Motivo <- 'Su promedio es menor a 7'
+			Si Proyectos=1 Y IngresosF<450 Y EstadoB=Noc Entonces
+				EstadoB <- Maa
+				Motivo <- 'Su promedio es menor a 7, pero cumple con requisitos para subida de nivel'
+			FinSi
+		SiNo
+			Si Promedio>=8 Y Promedio<9 Y Asistencia>=85 Entonces
+				EstadoB <- Bep
+				Motivo <- 'Promedio mayor o igual a 8 y asistencia mayor al 85%'
+			SiNo
+				Si Promedio>=9 Y Asistencia>=90 Y Materiasp=0 Entonces
+					EstadoB <- Bec
+					Motivo <- 'Promedio mayor o igual a 9, asistencia mayor al 90% y cero materias perdidas'
+				SiNo
+					Si Promedio>=9 Y Asistencia>=90 Y Materiasp>0 Entonces
+						EstadoB <- Bep
+						Motivo <- 'Promedio mayor o igual a 9, asistencia mayor al 90% pero tiene materias perdidas'
+					SiNo
+						Si Promedio>=9 Y Asistencia<90 Y Materiasp=0 Entonces
+							EstadoB <- Bep
+							Motivo <- 'Promedio mayor o igual a 9, asistencia menor al 90% y cero materias perdidas'
+						SiNo
+							Si Promedio>=9 Y Asistencia<90 Y Materiasp>0 Entonces
+								EstadoB <- Maa
+								Motivo <- 'Promedio mayor o igual a 9, asistencia menor al 90% y tiene materias perdidas'
+								Si Proyectos=1 Y IngresosF<450 Y EstadoB=Maa Entonces
+									EstadoB <- Bep
+									Motivo <- 'Cumple requisitos adicionales para subir a beca parcial'
+								FinSi
+							FinSi
+						FinSi
+					FinSi
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+	Escribir '-----RESULTADO-------'
+	Escribir 'Nombre: ', Nombre
+	Escribir 'Motivo: ', Motivo
+	Escribir EstadoB
