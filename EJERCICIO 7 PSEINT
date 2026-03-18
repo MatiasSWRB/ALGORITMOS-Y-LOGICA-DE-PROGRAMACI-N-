@@ -1,0 +1,86 @@
+Algoritmo sin_titulo
+		
+		Definir lecturaAnterior, lecturaActual, consumoTotal Como Real
+		Definir precioKW, costoBase, ajuste, totalFinal, consumoPorHabitante Como Real
+		Definir tipoVivienda, habitantes, altoConsumo, deudaAnterior Como Entero
+		Definir mensaje Como Cadena
+		
+		precioKW <- 0
+		ajuste <- 0
+		
+		Escribir "Lectura anterior: "
+		Leer lecturaAnterior
+		Escribir "Lectura actual: "
+		Leer lecturaActual
+		Escribir "Tipo de vivienda (1=Normal, 2=Social): "
+		Leer tipoVivienda
+		Escribir "Numero de habitantes: "
+		Leer habitantes
+		Escribir "Tiene artefactos de alto consumo? (1=Si, 0=No): "
+		Leer altoConsumo
+		Escribir "Tiene deuda anterior? (1=Si, 0=No): "
+		Leer deudaAnterior
+		
+		Si lecturaActual < lecturaAnterior Entonces
+			Escribir "Error: la lectura actual no puede ser menor que la anterior."
+		SiNo
+			Si habitantes <= 0 Entonces
+				Escribir "Error: el numero de habitantes debe ser mayor que 0."
+			SiNo
+				
+				consumoTotal <- lecturaActual - lecturaAnterior
+				
+				Si consumoTotal <= 100 Entonces
+					precioKW <- 0.10
+				SiNo
+					Si consumoTotal <= 200 Entonces
+						precioKW <- 0.15
+					SiNo
+						precioKW <- 0.20
+					Fin Si
+				Fin Si
+				
+				costoBase <- consumoTotal * precioKW
+				
+				Si deudaAnterior == 1 Entonces
+					ajuste <- ajuste + (costoBase * 0.10)
+				Fin Si
+				
+				Si tipoVivienda == 2 Y consumoTotal <= 80 Entonces
+					ajuste <- ajuste - (costoBase * 0.15)
+				Fin Si
+				
+				totalFinal <- costoBase + ajuste
+				consumoPorHabitante <- consumoTotal / habitantes
+				
+				Si altoConsumo == 1 Y consumoTotal > 250 Entonces
+					mensaje <- "Riesgo de sobrefacturacion"
+				SiNo
+					Si consumoPorHabitante > 60 Entonces
+						mensaje <- "Alerta de consumo excesivo"
+					SiNo
+						mensaje <- "Consumo dentro de lo normal"
+					Fin Si
+				Fin Si
+				
+				Escribir "----- FACTURA ELECTRICA -----"
+				Escribir "Consumo total: ", consumoTotal, " kW"
+				Escribir "Costo base: $", costoBase
+				
+				Si ajuste > 0 Entonces
+					Escribir "Recargo: $", ajuste
+				SiNo
+					Si ajuste < 0 Entonces
+						Escribir "Subsidio: $", ajuste
+					SiNo
+						Escribir "Subsidio o recargo: $0"
+					Fin Si
+				Fin Si
+				
+				Escribir "Total final: $", totalFinal
+				Escribir "Mensaje preventivo: ", mensaje
+				
+			Fin Si
+		Fin Si
+
+FinAlgoritmo
