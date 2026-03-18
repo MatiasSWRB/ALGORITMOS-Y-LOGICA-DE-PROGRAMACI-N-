@@ -1,0 +1,61 @@
+
+#include<iostream>
+using namespace std;
+int main(){
+int Lado1,Lado2,Lado3 ,Ladop ,Altura ,Angulo, Area;
+string tipola,tipoan, consistencia;
+cout<<"Ingrese Lado 1: ";
+cin>>Lado1;
+cout<<"Ingrese Lado 2: ";
+cin>>Lado2;
+cout<<"Ingrese Lado 3: ";
+cin>>Lado3;
+cout<<"Ingrese Altura: ";
+cin>>Altura;
+cout<<"Ingrese Angulo principal: ";
+cin>>Angulo;
+if(Lado1==0){
+   cout<<"No es un trianguo"<<endl;
+   return 0;
+   }else if(Lado2==0){
+   cout<<"No es un trianguo"<<endl;
+   return 0;
+   }else if(Lado3==0){
+   cout<<"----------No es un trianguo---------"<<endl;
+   return 0;
+   }else
+   cout<<"----------Es un triangulo-----------"<<endl;
+if(Lado1>Lado2&&Lado1>Lado3){
+    Ladop=Lado1;
+}else if(Lado2>Lado1&&Lado2>Lado3){
+    Ladop=Lado2;
+}else{
+    Ladop = Lado3;}
+if (Angulo<90&&Angulo>45){
+    tipoan="Acutangulo";
+}else if(Angulo==90){
+    tipoan="Rectangulo";
+}else if(Angulo>90&&Angulo<180){
+    tipoan="Obtusangulo";
+}else
+    tipoan="incosistente";
+
+if(Lado1==Lado2&&Lado1==Lado3){
+    tipola="Triangulo equilatero";
+}else if(Lado2==Lado1||Lado2==Lado3||Lado1==Lado3){
+    tipola="Triangulo isoceles";
+}else{
+    tipola ="Triangulo escaleno";}
+if(Altura>Ladop){
+    consistencia="inconsistente";
+}else
+consistencia="consistente";
+Area=(Ladop*Altura)/2;
+
+ cout<<"Tipo de trianfulo por sus lados: "<<tipola<<endl;
+ cout<<"Tipo de triangulo por su angulo principal: "<<tipoan<<endl;
+ cout<<"Lado principal de el triangulo: "<<Ladop<<endl;
+ cout<<"El area del triangulo es: "<<Area<<endl;
+ cout<<"El triangulo es: "<<consistencia;
+return 0;
+}
