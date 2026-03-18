@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+int main(){
+string Nombre,EstadoB;
+string Bec,Bep,Maa,Noc,Motivo;
+Bec="Cumple con los requisistos: Beca completa";
+Bep="Cumple parcialmente con los requisitos: Beca parcial";
+Maa="Cumple con la minima de requisitos: Materiales de apoyo";
+Noc="No cumple con los requisitos: Beca negada";
+int Promedio, Materiasp, IngresosF, Proyectos, Asistencia;
+cout<<"Nombre del estudiante: ";
+cin>>Nombre;
+cout<<"Promedio del estudiante: ";
+cin>>Promedio;
+cout<<"Numero de materias perdidas: ";
+cin>>Materiasp;
+cout<<"Ingresos familiares: ";
+cin>>IngresosF;
+cout<<"Participacion de proyectos (SI=1 / NO=0): ";
+cin>>Proyectos;
+cout<<"Porcentaje de asistencia:  ";
+cin>>Asistencia;
+if(Asistencia < 80){
+    EstadoB = Noc;
+    Motivo="Su porcentaje de asistencia es menos del 80%";
+}else if(Promedio<7){
+        EstadoB=Noc;
+        Motivo="Su promedio es menor a 7";
+  if(Proyectos == 1 && IngresosF < 450&&EstadoB == Noc){
+        EstadoB = Maa;
+        Motivo="Su promedio es menor a 7, pero cumple con los requisitos para la subida de nivel";
+}
+}else if (Promedio>=8&&Promedio<9&&Asistencia>=85){
+        EstadoB=Bep;
+        Motivo="Su promedio es mayor o igual a 8 y su porcentaje de asistencia es mayor al 85%";
+}else if (Promedio>=9&&Asistencia>=90&&Materiasp==0){
+        EstadoB=Bec;
+        Motivo="Su promedio es mayor o igual a 9, asistenca supera el 90% y cero materias reprobadas";
+}else if (Promedio>=9&&Asistencia>=90&&Materiasp>0){
+        EstadoB=Bep;
+        Motivo="Su promedio es mayor o igual a 9, asistenca supera el 90% y tiene materias reprobadas";
+}else if (Promedio>=9&&Asistencia<90&&Materiasp==0){
+        EstadoB=Bep;
+        Motivo="Su promedio es mayor o igual a 9, asistenca inferior el 90% y cero materias reprobadas";
+}else if (Promedio>=9&&Asistencia<90&&Materiasp>0){
+        EstadoB=Maa;
+        Motivo="Su promedio es mayor o igual a 9, asistenca inferior el 90% y tiene materias reprobadas";
+if(Proyectos == 1 && IngresosF < 450&&EstadoB == Maa){
+        EstadoB = Bep;
+        Motivo="Su promedio es mayor o igual a 9, asistenca inferior el 90% y tien materias reprobadas, pero cumple con los requisitos para la subida de nivel";
+}
+}
+cout<<"-----RESULTADO-------"<<endl;
+cout<<"Nombre: "<<Nombre<<endl;
+cout<<"Motivo: "<<Motivo<<endl;
+cout<<" "<<EstadoB<<endl;
+return 0;
+}
