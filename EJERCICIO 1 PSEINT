@@ -1,0 +1,80 @@
+Algoritmo sin_titulo
+		
+		// Declarar variables
+		Definir Nombre, Horall, Estado, Motivo, Prioridad Como Cadena
+		Definir Minutost, Numerof, Traecred, Pertenece Como Entero
+		
+		// Pedir datos
+		Escribir "Nombre del estudiante: "
+		Leer Nombre
+		
+		Escribir "Hora de llegada: "
+		Leer Horall
+		
+		Escribir "Minutos tarde: "
+		Leer Minutost
+		
+		Escribir "Numero de faltas: "
+		Leer Numerof
+		
+		Escribir "Trae credencial (Si=1 / No=0): "
+		Leer Traecred
+		
+		Escribir "Pertenece al curso y/o horario establecido (Si=1 / No=0): "
+		Leer Pertenece
+		
+		// Condiciones
+		Si Traecred = 0 Entonces
+			Estado <- "No puede ingresar"
+			Motivo <- "No trae credencial"
+			Prioridad <- "Alta"
+			
+		FinSi
+		Si Pertenece = 0 Entonces
+				Estado <- "No puede ingresar"
+				Motivo <- "No pertenece al curso y/o horario"
+				Prioridad <- "Alta"
+				
+			FinSi
+			Si Numerof >= 5 Entonces
+					Estado <- "No puede ingresar"
+					Motivo <- "Numero de faltas excedido"
+					Prioridad <- "Alta"
+					
+				FinSi
+				Si Minutost > 10 Entonces
+						Estado <- "No puede ingresar"
+						Motivo <- "Numero de minutos de gracia excedidos"
+						Prioridad <- "Media"
+						
+					FinSi
+					Si Numerof >= 3 Entonces
+							Estado <- "Ingresa con advertencia"
+							Motivo <- "Numero de faltas fuera del limite"
+							Prioridad <- "Media"
+							
+						FinSi
+						Si Minutost > 0 Y Minutost <= 10 Entonces
+								Estado <- "Ingresa con advertencia"
+								Motivo <- "Minutos de retraso dentro del margen"
+								Prioridad <- "Media"
+								
+							Sino
+								Estado <- "Ingresa"
+								Motivo <- "Cumple con las condiciones necesarias"
+								Prioridad <- "Baja"
+							FinSi
+							
+							// Mostrar resultados
+							Escribir " "
+							Escribir "----- RESULTADO -----"
+							Escribir "Nombre: ", Nombre
+							Escribir "Hora de llegada: ", Horall
+							Escribir "Minutos tarde: ", Minutost
+							Escribir "Numero de faltas: ", Numerof
+							Escribir "Estado: ", Estado
+							Escribir "Motivo: ", Motivo
+							Escribir "Prioridad: ", Prioridad
+							
+
+FinAlgoritmo
