@@ -1,0 +1,69 @@
+Algoritmo Triangulo
+	Definir Lado1, Lado2, Lado3, Ladop, Altura, Angulo, Area Como Entero
+	Definir tipola, tipoan, consistencia Como Cadena
+	Escribir 'Ingrese Lado 1: '
+	Leer Lado1
+	Escribir 'Ingrese Lado 2: '
+	Leer Lado2
+	Escribir 'Ingrese Lado 3: '
+	Leer Lado3
+	Escribir 'Ingrese Altura: '
+	Leer Altura
+	Escribir 'Ingrese Angulo principal: '
+	Leer Angulo
+	Si Lado1==0 Entonces
+		Escribir 'No es un triangulo'
+	FinSi
+	Si Lado2==0 Entonces
+		Escribir 'No es un triangulo'
+	FinSi
+	Si Lado3==0 Entonces
+		Escribir '---------- No es un triangulo ---------'
+	FinSi
+	Escribir '---------- Es un triangulo -----------'
+	// Determinar lado principal
+	Si Lado1>Lado2 Y Lado1>Lado3 Entonces
+		Ladop <- Lado1
+	FinSi
+	Si Lado2>Lado1 Y Lado2>Lado3 Entonces
+		Ladop <- Lado2
+	SiNo
+		Ladop <- Lado3
+	FinSi
+	// Tipo por angulo
+	Si Angulo<90 Y Angulo>45 Entonces
+		tipoan <- 'Acutangulo'
+	FinSi
+	Si Angulo==90 Entonces
+		tipoan <- 'Rectangulo'
+	FinSi
+	Si Angulo>90 Y Angulo<180 Entonces
+		tipoan <- 'Obtusangulo'
+	SiNo
+		tipoan <- 'Inconsistente'
+	FinSi
+	// Tipo por lados
+	Si Lado1==Lado2 Y Lado1==Lado3 Entonces
+		tipola <- 'Triangulo equilatero'
+	SiNo
+		Si Lado2==Lado1 O Lado2==Lado3 O Lado1==Lado3 Entonces
+			tipola <- 'Triangulo isoceles'
+		SiNo
+			tipola <- 'Triangulo escaleno'
+		FinSi
+		// Consistencia
+		Si Altura>Ladop Entonces
+			consistencia <- 'Inconsistente'
+		SiNo
+			consistencia <- 'Consistente'
+		FinSi
+		// Calcular area
+		Area <- (Ladop*Altura)/2
+		// Mostrar resultados
+		Escribir 'Tipo de triangulo por sus lados: ', tipola
+		Escribir 'Tipo de triangulo por su angulo principal: ', tipoan
+		Escribir 'Lado principal del triangulo: ', Ladop
+		Escribir 'El area del triangulo es: ', Area
+		Escribir 'El triangulo es: ', consistencia
+	FinSi
+FinAlgoritmo 
