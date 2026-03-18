@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    float nota1, nota2, nota3, asistencia, promedio;
+    int proyectoFinal, plagio;
+    string estadoAcademico, observacionDisciplinaria, observacionRendimiento;
+
+    cout << "Nota 1: ";
+    cin >> nota1;
+
+    cout << "Nota 2: ";
+    cin >> nota2;
+
+    cout << "Nota 3: ";
+    cin >> nota3;
+
+    cout << "Porcentaje de asistencia: ";
+    cin >> asistencia;
+
+    cout << "Entrego proyecto final? (1=Si, 0=No): ";
+    cin >> proyectoFinal;
+
+    cout << "Cometio plagio? (1=Si, 0=No): ";
+    cin >> plagio;
+
+    promedio = (nota1 + nota2 + nota3) / 3;
+
+    observacionDisciplinaria = "Sin observaciones";
+    observacionRendimiento = "Rendimiento normal";
+
+    if (plagio == 1) {
+        estadoAcademico = "Reprobado automatico";
+        observacionDisciplinaria = "Cometio plagio";
+    } else if (asistencia < 70) {
+        estadoAcademico = "Reprobado";
+        observacionDisciplinaria = "Asistencia insuficiente";
+    } else {
+        if (nota1 >= 9 && nota2 >= 9 && nota3 >= 9 && asistencia >= 95) {
+            estadoAcademico = "Aprobado con felicitacion";
+        } else if (promedio >= 7 && proyectoFinal == 1) {
+            estadoAcademico = "Aprobado";
+        } else if (promedio >= 5 && promedio < 7) {
+            estadoAcademico = "Recuperacion";
+        } else if (promedio < 5) {
+            estadoAcademico = "Reprobado";
+        }
+
+        if (proyectoFinal == 0 && estadoAcademico == "Aprobado") {
+            estadoAcademico = "Recuperacion";
+        }
+    }
+
+    if ((nota1 == 10 && nota2 < 4 && nota3 < 4) ||
+        (nota2 == 10 && nota1 < 4 && nota3 < 4) ||
+        (nota3 == 10 && nota1 < 4 && nota2 < 4)) {
+        observacionRendimiento = "Rendimiento irregular";
+    }
+
+    cout << "\n----- RESULTADO ACADEMICO -----" << endl;
+    cout << "Promedio: " << promedio << endl;
+    cout << "Estado academico: " << estadoAcademico << endl;
+    cout << "Observacion disciplinaria: " << observacionDisciplinaria << endl;
+    cout << "Observacion de rendimiento: " << observacionRendimiento << endl;
+
+    return 0;
+}
