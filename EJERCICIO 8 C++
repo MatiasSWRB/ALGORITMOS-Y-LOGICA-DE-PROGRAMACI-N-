@@ -57,7 +57,7 @@ int main() {
         observacionRendimiento = "Rendimiento irregular";
     }
 
-    cout << "\n----- RESULTADO ACADEMICO -----" << endl;
+    cout << "----- RESULTADO ACADEMICO -----" << endl;
     cout << "Promedio: " << promedio << endl;
     cout << "Estado academico: " << estadoAcademico << endl;
     cout << "Observacion disciplinaria: " << observacionDisciplinaria << endl;
