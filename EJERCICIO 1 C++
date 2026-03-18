@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+int main(){
+//Declaro variables
+string Nombre,Horall,Estado,Motivo,Prioridad;
+int Minutost, Numerof, Traecred, Pertenece;
+//Pedir datos
+cout<<"Nombre del estudiante: ";
+cin>>Nombre;
+cout<<"Hora de llegada: ";
+cin>>Horall;
+cout<<"Minutos tarde: ";
+cin>>Minutost;
+cout<<"Numero de faltas: ";
+cin>>Numerof;
+cout<<" Trae credencial (Si=1 / No=0): ";
+cin>>Traecred;
+cout<<"Pertenece al curso y/o horario establecido (Si=1 / No=0): ";
+cin>>Pertenece;
+
+if(Traecred==0){
+    Estado="No puede ingresar";
+    Motivo="No trae credencial";
+    Prioridad="Alta";
+}else if(Pertenece==0){
+    Estado="No puede ingresar";
+    Motivo="No Pertenece al curso y/o horario";
+    Prioridad="Alta" ;
+}else if(Numerof>=5){
+    Estado="No puede ingresar";
+    Motivo="Numero de faltas exedido";
+    Prioridad="Alta" ;
+
+}else if(Minutost>10){
+    Estado="No puede ingresar";
+    Motivo="Numero de minutos de gracia exedidos";
+    Prioridad="Media" ;
+
+}else if(Numerof>=3){
+    Estado="Ingresa con advertencia";
+    Motivo="Numero de faltas fuera del limite";
+    Prioridad="Media" ;
+}else if(Minutost>0&&Minutost<=10){
+    Estado="Ingresa con advertencia";
+    Motivo="Numero de minutos de gracia exedidos";
+    Prioridad="Media" ;
+}else{
+    Estado="Ingresa";
+    Motivo="Cumple con las condiciones necesarias";
+    Prioridad="Baja" ;
+}
+
+    cout << "----- RESULTADO -----";
+    cout << "Nombre:           " << Nombre << endl;
+    cout << "Hora de llegada:  " << Horall << endl;
+    cout << "Minutos tarde:    " << Minutost << endl;
+    cout << "Numero de faltas: " << Numerof << endl;
+    cout << "Estado:           " << Estado << endl;
+    cout << "Motivo:           " << Motivo << endl;
+    cout << "Prioridad:        " << Prioridad << endl;
+
+    return 0;
+
+
+}
