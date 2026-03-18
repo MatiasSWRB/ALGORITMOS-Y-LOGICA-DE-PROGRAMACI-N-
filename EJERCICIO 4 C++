@@ -1,0 +1,83 @@
+#include<iostream>
+using namespace std;
+int main(){
+string nombretipo,nombrecliente,anilladod,horariod;
+float Numeroh,tipoh ,tipoc ,horario, recargo;
+float anillado, Pll;
+float Pa=1, Pb=0.75, Pc=0.5;
+float tipo;
+float desc, descll, subtotal, total;
+cout<<"Quien desea sacar copias (Docente=1 / Estudiante=0): ";
+cin>>tipoc;
+cout<<"B/N o Color (B/N=1 / Color=0): ";
+cin>>tipoh;
+cout<<"Numero de hojas: ";
+cin>>Numeroh;
+cout<<"horario (Nocturno=1 / Diurno=0): ";
+cin>>horario;
+cout<<"Anillado (Si=1 / No=0): ";
+cin>>anillado;
+
+if(tipoc==1){
+  desc=0.05;
+  nombrecliente="Docente";
+  }else if(tipoc==0){
+  nombrecliente="Estudiante";
+}else if(tipoc==0&&Numeroh>50){
+  desc=0.08;
+}
+if(tipoh==1){
+    tipo=0.05;
+    nombretipo="B/N";
+}else
+    tipo=0.10;
+     nombretipo="COLOR";
+
+ if(anillado==1){
+    Pll=1;
+    anilladod="SI";
+ }else if(anillado==0){
+    Pll=0;
+    anilladod="NO";}
+ if(Numeroh>80){
+    descll=Pll*0.25;
+ }else
+    descll=0;
+ if(horario==1){
+    recargo=0.10;
+    horariod="Nocturno";
+ }else
+ recargo=0;
+    horariod="Diurno";
+ if(Numeroh<=20){
+    subtotal=((Numeroh*tipo)*Pa)+(Pll-descll);
+    total=subtotal-(subtotal*desc)+(subtotal*recargo);
+ }else if(Numeroh>20&&Numeroh<=100){
+    subtotal=((Numeroh*tipo)*Pb)+(Pll-descll);
+    total=subtotal-(subtotal*desc)+(subtotal*recargo);
+ }else if(Numeroh<100){
+    subtotal=((Numeroh*tipo)*Pc)+(Pll-descll);
+    total=subtotal-(subtotal*desc)+(subtotal*recargo);
+ }
+cout<<"===================================="<<endl;
+cout<<"   IMPRESORAS LOS POLLOSHERMANOS    "<<endl;
+cout<<"===================================="<<endl;
+cout<<"Tipo de cliente : "<<nombrecliente<<endl;
+cout<<"Tipo impresion  : "<<nombretipo<<endl;
+cout<<"Numero de hojas : "<<Numeroh<<endl;
+cout<<"Horario         : "<<horariod<<endl;
+cout<<"Anillado        : "<<anilladod<<endl;
+cout<<"------------------------------------"<<endl;
+cout<<"Subtotal        : $"<<subtotal<<endl;
+cout<<"Descuento       : "<<desc*100<<" %"<<endl;
+cout<<"Recargo         : "<<recargo*100<<" %"<<endl;
+cout<<"------------------------------------"<<endl;
+cout<<"TOTAL A PAGAR   : $"<<total<<endl;
+cout<<"===================================="<<endl;
+cout<<"       GRACIAS POR SU COMPRA :)     "<<endl;
+cout<<"===================================="<<endl;
+
+return 0;
+}
+
+
