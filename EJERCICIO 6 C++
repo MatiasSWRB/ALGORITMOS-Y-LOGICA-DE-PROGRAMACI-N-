@@ -1,0 +1,91 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int estudiantes, dias, alimentacion, descuentoInst, coordinador;
+    int pagantesTransporte;
+    int tipoTransporte;
+    float hospedajeDia;
+    float transportePersona = 0;
+    float costoTransporte, costoHospedaje, costoAlimentacion;
+    float subtotal, descuentoHosp = 0, descuentoInstitucional = 0;
+    float totalGeneral, totalPorEstudiante;
+    string recomendacion;
+
+cout << "Numero de estudiantes: ";
+    cin >> estudiantes;
+    cout << "Tipo de transporte (1=Bus, 2=Van, 3=Avion): ";
+    cin >> tipoTransporte;
+    cout << "Numero de dias: ";
+    cin >> dias;
+    cout << "Costo de hospedaje por dia: ";
+    cin >> hospedajeDia;
+    cout << "Incluye alimentacion? (1=Si, 0=No): ";
+    cin >> alimentacion;
+    cout << "Aplica descuento institucional? (1=Si, 0=No): ";
+    cin >> descuentoInst;
+    cout << "Hay coordinador que viaja gratis en transporte? (1=Si, 0=No): ";
+    cin >> coordinador;
+
+ if (estudiantes <= 0 || dias <= 0 || hospedajeDia <= 0) {
+        cout << "Error: datos no validos." << endl;
+        return 0;
+    }else
+    switch (tipoTransporte) {
+        case 1:
+        transportePersona = 25;
+        break;
+        case 2:
+        transportePersona = 35;
+        break;
+        case 3:
+        transportePersona = 120;
+        break;
+        default:
+        cout << "Error: tipo de transporte no valido." << endl;
+return 0;
+    if (estudiantes > 20) {
+        transportePersona = transportePersona - 5;
+    }
+    pagantesTransporte = estudiantes;
+    if (coordinador == 1) {
+        pagantesTransporte = estudiantes - 1;
+    }
+
+    if (pagantesTransporte < 0) {
+        pagantesTransporte = 0;
+    }
+    costoTransporte = pagantesTransporte * transportePersona;
+    costoHospedaje = estudiantes * dias * hospedajeDia;
+    if (dias > 3) {
+        descuentoHosp = costoHospedaje * 0.10;
+        costoHospedaje = costoHospedaje - descuentoHosp;
+    if (alimentacion == 1) {
+        costoAlimentacion = estudiantes * dias * 10;
+    } else {
+        costoAlimentacion = 0;
+    }
+    subtotal = costoTransporte + costoHospedaje + costoAlimentacion;
+    if (descuentoInst == 1 && subtotal > 1000) {
+        descuentoInstitucional = subtotal * 0.08;
+    }
+    totalGeneral = subtotal - descuentoInstitucional;
+    totalPorEstudiante = totalGeneral / estudiantes;
+    if (totalPorEstudiante > 200) {
+        recomendacion = "Viaje no recomendable";
+    } else {
+        recomendacion = "Viaje recomendable";
+    }
+cout << "----- RESUMEN DEL VIAJE -----" << endl;
+    cout << "Costo de transporte: $" << costoTransporte << endl;
+    cout << "Costo de hospedaje: $" << costoHospedaje << endl;
+    cout << "Costo de alimentacion: $" << costoAlimentacion << endl;
+    cout << "Descuento aplicado: $" << (descuentoHosp + descuentoInstitucional) << endl;
+    cout << "Total general: $" << totalGeneral << endl;
+    cout << "Total por estudiante: $" << totalPorEstudiante << endl;
+    cout << "Recomendacion final: " << recomendacion << endl;
+
+    return 0;
+}
+    }
+}
